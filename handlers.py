@@ -61,9 +61,9 @@ def _parse_get_status_response(response) -> tuple:
     elif status_code == "STATUS_CANCEL":
         return Status.CANCEL, None
     elif status_code.startswith("STATUS_WAIT_RETRY"):
-        return Status.REPEAT, status_code.split(":")[1]
+        return Status.REPEAT, response.split(":")[1]
     elif status_code.startswith("STATUS_OK"):
-        return Status.SENT, status_code.split(":")[1]
+        return Status.SENT, response.split(":")[1]
 
 
 def _parse_get_prices_response(response) -> dict:
